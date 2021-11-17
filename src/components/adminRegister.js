@@ -70,7 +70,11 @@ const Register = () =>  {
                 }
             }
 
-            
+            console.log(adminData);
+            reset()
+        } else {
+            console.log('errors', errors);
+            setFormErrors(errors)
         }
     }
 

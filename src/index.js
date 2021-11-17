@@ -8,9 +8,9 @@ import configureStore from './store/configureStore'
 const store = configureStore()
 console.log('state', store.getState());
 
-store.subcribe(() => {
-  console.log('state updated',store.getState());
-})
+// store.subcribe(() => {
+//   console.log('state updated',store.getState());
+// })
 
 ReactDOM.render(
   <Provider store={store}><BrowserRouter>

@@ -1,8 +1,8 @@
-import {createStore,combineReducer} from 'react-redux'
+import {createStore,combineReducers} from 'redux'
 import adminReducer from '../reducer/adminReducer'
 
 const configureStore = () =>{
-    const store = createStore(combineReducer({
+    const store = createStore(combineReducers({
         admin: adminReducer
     }))
     return store

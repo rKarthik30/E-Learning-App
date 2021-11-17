@@ -1,9 +1,10 @@
 import React from 'react'
+import ELearningContainer from './components/eLearningContainer'
 
 const App = () =>  {
   return (
     <div>
-      App component
+      <ELearningContainer/>
     </div>
   )
 }
