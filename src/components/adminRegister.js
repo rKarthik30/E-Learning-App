@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import validator from 'validator'
+import {useDispatch} from 'react-redux'
+import {startAdminRegister} from '../action/adminAction'
 
 const Register = () =>  {
     const [username,setUsername] = useState('')
@@ -9,6 +11,7 @@ const Register = () =>  {
     const [acawebsite,setAcawebsite] = useState('')
     const [formErrors,setFormErrors] = useState({})
     const errors = {}
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         const atr = e.target.name
@@ -70,8 +73,10 @@ const Register = () =>  {
                 }
             }
 
-            console.log(adminData);
-            reset()
+            // console.log(adminData);
+            // reset()
+            dispatch(startAdminRegister(adminData,reset))
+            
         } else {
             console.log('errors', errors);
             setFormErrors(errors)
@@ -84,15 +89,19 @@ const Register = () =>  {
         <form onSubmit={handleSubmit}>
             <label>Username : </label>
             <input type="text" value={username} placeholder="Enter the Username" name="username" onChange={handleChange}/><br/>
+            {formErrors.username && <span>{formErrors.username}</span>}<br/>
 
             <label>Email : </label>
             <input type="text" value={email} placeholder="Enter the Email Address" name="email" onChange={handleChange}/><br/>
+            {formErrors.email && <span>{formErrors.email}</span>}<br/>
 
             <label>Password : </label>
             <input type="text" value={password} placeholder="Enter the password" name="password" onChange={handleChange}/><br/>
+            {formErrors.password && <span>{formErrors.password}</span>}<br/>
 
             <label>Academy Name : </label>
             <input type="text" value={acaname} placeholder="Enter the Academy Name" name="acaname" onChange={handleChange}/><br/>
+            {formErrors.acaname && <span>{formErrors.acaname}</span>}<br/>
 
             <label>Academy Website : </label>
             <input type="text" value={acawebsite} placeholder="Enter Academy Website" name="acawebsite" onChange={handleChange}/><br/>
