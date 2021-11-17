@@ -10,7 +10,7 @@ export const startAdminRegister = (adminData,reset) => {
                     alert(result.errors)
                     // console.log(result);
                 } else {
-                    alert('Registration successfull!!!')
+                    alert(result.notice)
                 }
             })
     }
