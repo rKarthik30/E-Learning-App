@@ -93,6 +93,31 @@ export const sendStudentRegister = (result) => {
     }
 }
 
+export const startStudentList = () => {
+    return (dispatch) => {
+        axios.get('https://dct-e-learning.herokuapp.com/api/admin/students',{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else{
+                    dispatch(sendStudentList(result))
+                }
+            })
+    }
+}
+
+export const sendStudentList = (result) => {
+    return{
+        type: 'STUDENT_LIST',
+        payload: result
+    }
+}
+
 export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')

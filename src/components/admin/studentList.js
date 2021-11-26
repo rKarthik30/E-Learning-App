@@ -1,10 +1,16 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
+import React,{useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import {startStudentList} from '../../action/adminAction'
 
 const StudentList = () => {
     const student = useSelector((state) => {
         return state.admin.student
     })
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(startStudentList())
+    },[])
 
     return(
         <div>
