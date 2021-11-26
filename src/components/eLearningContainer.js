@@ -4,6 +4,9 @@ import Home from './home&login/Home'
 import adminContainer from './admin/adminContainer' 
 import adminRegister from './admin/adminRegister'
 import adminLogin from './admin/adminLogin'
+import adminAccount from './admin/adminAccount'
+import studentRegister from './admin/studentRegister'
+import dashboard from './admin/dashboard'
 
 const eLearningContainer = () =>  {
   return (
@@ -14,6 +17,9 @@ const eLearningContainer = () =>  {
       <Route path='/admin' component={adminContainer} exact/>
       <Route path='/admin/login' component={adminLogin} exact/>
       <Route path='/admin/register' component={adminRegister} exact/>
+      <Route path='/admin/account' component={adminAccount} exact/>
+      <Route path='/admin/addStudent' component={studentRegister} exact/>
+      <Route path='/admin/dashboard' component={dashboard} exact/>
     </div>
   )
 }

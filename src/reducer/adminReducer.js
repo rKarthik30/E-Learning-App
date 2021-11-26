@@ -6,10 +6,15 @@ const adminInitialState ={
 
 const adminReducer = (state = adminInitialState,action) => {
     switch(action.type){
-        default : {
-            return [...state.data]
+        case 'LOGIN': {
+            return {...state,isLoading: action.payload}
         }
-    }
-}
+        case 'LOGOUT': {
+            return {...state,isLoading: action.payload}
+        }
+        default : {
+            return {...state}
+        }
+    }}
 
 export default adminReducer

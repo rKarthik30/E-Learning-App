@@ -16,7 +16,7 @@ export const startAdminRegister = (adminData,reset) => {
     }
 }
 
-export const startAdminLogin = (loginData,reset,redirect) => {
+export const startAdminLogin = (loginData,reset,redirect,loginAuth) => {
     return (dispatch) => {
         axios.post('http://dct-e-learning.herokuapp.com/api/admin/login',loginData)
             .then((res) => {
@@ -28,8 +28,33 @@ export const startAdminLogin = (loginData,reset,redirect) => {
                     localStorage.setItem('token',result.token)
                     reset()
                     redirect()
-                    
+                    const change = loginAuth()
+                    dispatch(toggle(change))
                 }
             })
+    }
+}
+
+export const toggle = (value) => {
+    return {
+        type:'LOGIN',
+        payload: value
+    }
+}
+
+export const startLogout = (props,logoutAuth) => {
+    return (dispatch) => {
+        alert('Successfully logged out')
+        localStorage.removeItem('token')
+        props.history.push("/")
+        const result = logoutAuth()
+        dispatch(startLogoutToggle(result))
+    }
+}
+
+export const startLogoutToggle = (result) => {
+    return {
+        type:'LOGOUT',
+        payload:result
     }
 }
