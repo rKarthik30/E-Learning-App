@@ -6,6 +6,12 @@ const studentInitialState = {
 
 const studentReducer = (state = studentInitialState,action) => {
     switch(action.type){
+        case 'LOGIN': {
+            return {...state,isLoading: action.payload}
+        }
+        case 'LOGOUT': {
+            return {...state,isLoading: action.payload}
+        }
         default: {
             return {...state}
         }

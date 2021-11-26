@@ -1,11 +1,27 @@
 import React from 'react'
+import {useDispatch,useSelector} from 'react-redux'
+import Login from '../home&login/Login'
+import {startStudentLogin} from '../../action/studentAction'
 
-const StudentLogin = () =>  {
-  return (
-    <div>
-      StudentLogin component
-    </div>
-  )
+const StudentLogin = (props) =>  {
+    const student = useSelector((state) => {
+        return state.student
+    })
+    const dispatch = useDispatch()
+
+    const loginAuth = () => {
+        return !student.isLoading
+    }
+    const redirect = () => {
+        props.history.push('/')
+    }
+
+    const callBack = (loginData,reset) => {
+        dispatch(startStudentLogin(loginData,reset,redirect,loginAuth))
+    }
+    return (
+        <Login callBack={callBack}/>
+    )
 }
 
 export default StudentLogin

@@ -8,11 +8,14 @@ import adminAccount from './admin/adminAccount'
 import studentRegister from './admin/studentRegister'
 import dashboard from './admin/dashboard'
 import studentList from './admin/studentList'
+import studentContainer from './student/studentContainer'
+import studentLogin from './student/studentLogin'
+import studentAccount from './student/studentAccount'
 
 const eLearningContainer = () =>  {
   return (
     <div>
-      <Link to='/'>Home</Link> | <Link to='/admin'>Admin</Link> 
+      <Link to='/'>Home</Link> | <Link to='/admin'>Admin</Link> | <Link to='/student'>Student</Link>
 
       <Route path='/' component={Home} exact/>
       <Route path='/admin' component={adminContainer} exact/>
@@ -22,6 +25,10 @@ const eLearningContainer = () =>  {
       <Route path='/admin/addStudent' component={studentRegister} exact/>
       <Route path='/admin/dashboard' component={dashboard} exact/>
       <Route path='/admin/studentList' component={studentList} exact/>
+
+      <Route path='/student' component={studentContainer} exact/>
+      <Route path='/student/login' component={studentLogin} exact/> 
+      <Route path='/student/account' component={studentAccount} exact/>
     </div>
   )
 }
