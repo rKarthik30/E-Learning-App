@@ -1,11 +1,16 @@
 import React,{useState} from 'react'
 import validator from 'validator'
+// import {useDispatch} from 'react-redux'
+// import {startAdminLogin} from '../../action/adminAction'
 
-const Login = () =>  {
+const Login = (props) =>  {
+  const {callBack} = props
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [formErrors,setFormErrors] = useState({})
   const errors = {}
+
+  // const dispatch = useDispatch()
 
   const handleChange = (e) => {
     const atr = e.target.name
@@ -29,22 +34,30 @@ const Login = () =>  {
     } 
   }
 
-  const reset = () => {
-    setPassword('')
-    setEmail('')
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     runValidator()
-    
+    console.log(props.history)
     if(Object.keys(errors).length === 0){
       setFormErrors({})
-      const formData = {
+      const loginData = {
         email,
         password
       }
-      reset()
+
+      const reset = () => {
+        setPassword('')
+        setEmail('')
+      }
+    
+      // const redirect = () => {
+        
+      //   props.history.push('/')
+      // }
+
+      callBack(loginData,reset)
+      // dispatch(startAdminLogin(loginData,reset,redirect))
+
     }else{
       setFormErrors(errors)
     }

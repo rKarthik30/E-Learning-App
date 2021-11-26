@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import validator from 'validator'
 import {useDispatch} from 'react-redux'
-import {startAdminRegister} from '../action/adminAction'
+import {startAdminRegister} from '../../action/adminAction'
 
 const Register = () =>  {
     const [username,setUsername] = useState('')

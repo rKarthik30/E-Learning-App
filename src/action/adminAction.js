@@ -15,3 +15,21 @@ export const startAdminRegister = (adminData,reset) => {
             })
     }
 }
+
+export const startAdminLogin = (loginData,reset,redirect) => {
+    return (dispatch) => {
+        axios.post('http://dct-e-learning.herokuapp.com/api/admin/login',loginData)
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else{
+                    alert('Successfully Logged in')
+                    localStorage.setItem('token',result.token)
+                    reset()
+                    redirect()
+                    
+                }
+            })
+    }
+}
