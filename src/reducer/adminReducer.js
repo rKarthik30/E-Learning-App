@@ -9,6 +9,9 @@ const adminReducer = (state = adminInitialState,action) => {
         case 'LOGIN': {
             return {...state,isLoading: action.payload}
         }
+        case 'ACCOUNT': {
+            return {...state,data:action.payload}
+        }
         case 'LOGOUT': {
             return {...state,isLoading: action.payload}
         }

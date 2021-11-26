@@ -42,6 +42,30 @@ export const toggle = (value) => {
     }
 }
 
+export const startAccount = () => {
+    return (dispatch) => {
+        axios.get('https://dct-e-learning.herokuapp.com/api/admin/account',{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                dispatch(startAccountSet(result))
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+    }
+}
+
+export const startAccountSet = (result) => {
+    return {
+        type: 'ACCOUNT',
+        payload: result
+    }
+}
+
 export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')
