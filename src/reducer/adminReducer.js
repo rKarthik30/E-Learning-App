@@ -17,7 +17,7 @@ const adminReducer = (state = adminInitialState,action) => {
             return {...state,isLoading: action.payload}
         }
         case 'REGISTER': {
-            return {...state,student: action.payload}
+            return {...state,student:[action.payload]}
         }
         default : {
             return {...state}

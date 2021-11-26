@@ -17,7 +17,7 @@ const AdminAccount = (props) => {
             <h2>Name - {admin.username}</h2>
             <h3>Role - {admin.role}</h3>
             <h3>Email -{admin.email}</h3>
-            <h3>Academy Name - {admin.academy.name}</h3>
+            {/* <h3>Academy Name - {admin.academy.name}</h3> */}
         </div>
     )
 }
