@@ -1,6 +1,5 @@
 import axios from 'axios' 
 
-
 export const startAdminRegister = (adminData,reset) => {
     return (dispatch) => {
         axios.post('http://dct-e-learning.herokuapp.com/api/admin/register',adminData)
@@ -62,6 +61,34 @@ export const startAccount = () => {
 export const startAccountSet = (result) => {
     return {
         type: 'ACCOUNT',
+        payload: result
+    }
+}
+
+export const startStudentRegister = (registerData,reset) => {
+    return (dispatch) => {
+        axios.post('https://dct-e-learning.herokuapp.com/api/admin/students',registerData,{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                    // console.log(result.errors);
+                }else{
+                    alert('Successfully Enrolled')
+                    dispatch(sendStudentRegister(result))
+                    reset()
+                }
+            })
+    }
+}
+
+export const sendStudentRegister = (result) => {
+    return {
+        type: 'REGISTER',
         payload: result
     }
 }

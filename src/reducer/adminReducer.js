@@ -1,6 +1,7 @@
 const adminInitialState ={
     isLoading : true,
     data : [],
+    student : [],
     errors : {}
 }
 
@@ -14,6 +15,9 @@ const adminReducer = (state = adminInitialState,action) => {
         }
         case 'LOGOUT': {
             return {...state,isLoading: action.payload}
+        }
+        case 'REGISTER': {
+            return {...state,student: action.payload}
         }
         default : {
             return {...state}
