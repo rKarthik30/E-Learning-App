@@ -22,7 +22,7 @@ const AdminContainer = (props) => {
                 </>
             ):(
                 <>
-                    <Link to='/admin/account'>Account</Link> | <Link to='/admin/addStudent'>Student Register</Link> | <Link to='/admin/dashboard'>Dashboard</Link> | <Link to='/admin/studentList'>Student List</Link> | <Link to='#' onClick={(e) => {
+                    <Link to='/'>Home</Link> |<Link to='/admin/account'>Account</Link> | <Link to='/admin/addStudent'>Student Register</Link> | <Link to='/admin/dashboard'>Dashboard</Link> | <Link to='/admin/studentList'>Student List</Link> | <Link to='#' onClick={(e) => {
                         e.preventDefault()
                         dispatch(startLogout(props,logoutAuth))
                         } }>Loggout</Link>

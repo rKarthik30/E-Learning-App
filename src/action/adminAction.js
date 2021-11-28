@@ -118,6 +118,33 @@ export const sendStudentList = (result) => {
     }
 }
 
+export const startStudentDelete = (id) => {
+    return (disatch) => {
+        axios.delete(`https://dct-e-learning.herokuapp.com/api/admin/students/:${id}`,{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else {
+                    alert('Successfully removed the Student')
+                    disatch(sendStudentDelete(id))
+                }
+
+            })
+    }
+}
+
+export const sendStudentDelete = (id) => {
+    return{
+        type: 'DELETE',
+        payload:id
+    }
+}
+
 export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')

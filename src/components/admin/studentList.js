@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {startStudentList} from '../../action/adminAction'
+import {startStudentList,startStudentDelete} from '../../action/adminAction'
 
 const StudentList = () => {
     const student = useSelector((state) => {
@@ -11,6 +11,10 @@ const StudentList = () => {
     useEffect(() => {
         dispatch(startStudentList())
     },[])
+
+    const handleRemove = (id) =>{
+        dispatch(startStudentDelete(id))
+    }
 
     return(
         <div>
@@ -33,7 +37,7 @@ const StudentList = () => {
                                 <td>{ele.name}</td>
                                 <td>{ele.email}</td>
                                 <td>{ele.role}</td>
-                                <td><button>Remove</button></td>
+                                <td><button onClick={ () => {handleRemove(ele._id)}}>Remove</button></td>
                             </tr>
                         )
                     })}

@@ -22,7 +22,7 @@ const StudentContainer = (props) =>  {
                 </>
             ):(
                 <>
-                    <Link to='/student/account'>Account</Link> | <Link to='#' onClick={(e) => {
+                    <Link to='/'>Home</Link> | <Link to='/student/account'>Account</Link> | <Link to='#' onClick={(e) => {
                         e.preventDefault()
                         dispatch(startLogout(props,logoutAuth))
                         } }>Loggout</Link>

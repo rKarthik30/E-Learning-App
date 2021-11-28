@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import {Link,Route,withRouter} from 'react-router-dom'
 import Home from './home&login/Home'
 import adminContainer from './admin/adminContainer' 
@@ -12,10 +13,20 @@ import studentContainer from './student/studentContainer'
 import studentLogin from './student/studentLogin'
 import studentAccount from './student/studentAccount'
 
-const eLearningContainer = () =>  {
+const ELearningContainer = () =>  {
+  const admin = useSelector((state) =>{
+    return state.admin
+  })
+  const student = useSelector((state) =>{
+    return state.student
+  })
   return (
     <div>
-      <Link to='/'>Home</Link> | <Link to='/admin'>Admin</Link> | <Link to='/student'>Student</Link>
+      {(admin.isLoading || student.isLoading) && 
+        <>
+          <Link to='/'>Home</Link> | <Link to='/admin'>Admin</Link> | <Link to='/student'>Student</Link>
+        </>
+      }
 
       <Route path='/' component={Home} exact/>
       <Route path='/admin' component={adminContainer} exact/>
@@ -33,4 +44,4 @@ const eLearningContainer = () =>  {
   )
 }
 
-export default withRouter(eLearningContainer)
+export default withRouter(ELearningContainer)

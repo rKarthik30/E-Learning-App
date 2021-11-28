@@ -22,6 +22,13 @@ const adminReducer = (state = adminInitialState,action) => {
         case 'STUDENT_LIST': {
             return {...state,student:action.payload}
         }
+        case 'DELETE' : {
+            const result = state.student.filter((ele) => {
+                return ele._id !== action.payload
+            })
+
+            return {...state,student:result}
+        }
         default : {
             return {...state}
         }
