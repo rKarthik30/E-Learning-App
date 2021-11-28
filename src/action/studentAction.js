@@ -14,6 +14,7 @@ export const startStudentLogin = (loginData,reset,redirect,loginAuth) => {
                     redirect()
                     const change = loginAuth()
                     dispatch(toggle(change))
+                    dispatch(startStudentAccount())
                 }
             })
     }
@@ -23,6 +24,34 @@ export const toggle = (value) => {
     return {
         type:'LOGIN',
         payload: value
+    }
+}
+
+export const startStudentAccount = () => {
+    console.log('student');
+    return (dispatch) => {
+        axios.get('http://dct-e-learning.herokuapp.com/api/students/account',{
+            header : {
+                Authorization : localStorage.getItem('token')
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                    console.log(result.errors);
+                } else{
+                    dispatch(sendStudentAccount(result))
+                    console.log('karthik',result);
+                }
+            })
+    }
+}
+
+export const sendStudentAccount = (result) => {
+    return {
+        type: 'ACCOUNT',
+        payload: result
     }
 }
 
