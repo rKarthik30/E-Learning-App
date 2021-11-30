@@ -1,5 +1,6 @@
 const studentInitialState = {
     isLoading : true,
+    isLogin: false,
     data:[],
     errors:{}
 }
@@ -11,6 +12,12 @@ const studentReducer = (state = studentInitialState,action) => {
         }
         case 'LOGOUT': {
             return {...state,isLoading: action.payload}
+        }
+        case 'LOGIN_CHANGE' : {
+            return {...state,isLogin: action.payload}
+        }
+        case 'LOGOUT_CHANGE' : {
+            return {...state,isLogin: action.payload}
         }
         case 'ACCOUNT' : {
             return {...state,data:[action.payload]}

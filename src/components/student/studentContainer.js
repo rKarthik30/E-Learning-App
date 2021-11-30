@@ -13,6 +13,9 @@ const StudentContainer = (props) =>  {
     const logoutAuth = () => {
         return !student.isLoading
     }
+    const changleLogout = () => {
+        return !student.isLogin
+    }
 
   return (
     <div>
@@ -24,8 +27,8 @@ const StudentContainer = (props) =>  {
                 <>
                     <Link to='/'>Home</Link> | <Link to='/student/account'>Account</Link> | <Link to='#' onClick={(e) => {
                         e.preventDefault()
-                        dispatch(startLogout(props,logoutAuth))
-                        } }>Loggout</Link>
+                        dispatch(startLogout(props,logoutAuth,changleLogout))
+                        } }>Logout</Link>
                 </>
             )}
     </div>

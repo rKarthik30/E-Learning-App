@@ -12,12 +12,17 @@ const StudentLogin = (props) =>  {
     const loginAuth = () => {
         return !student.isLoading
     }
+    const changeLogin = () => {
+        console.log(student.isLogin);
+        return !student.isLogin
+    }
+
     const redirect = () => {
         props.history.push('/')
     }
 
     const callBack = (loginData,reset) => {
-        dispatch(startStudentLogin(loginData,reset,redirect,loginAuth))
+        dispatch(startStudentLogin(loginData,reset,redirect,loginAuth,changeLogin))
     }
     return (
         <Login callBack={callBack}/>

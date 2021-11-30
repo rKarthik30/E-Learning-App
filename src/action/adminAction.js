@@ -149,7 +149,7 @@ export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')
         localStorage.removeItem('token')
-        props.history.push("/")
+        // props.history.push("/")
         const result = logoutAuth()
         dispatch(startLogoutToggle(result))
     }
