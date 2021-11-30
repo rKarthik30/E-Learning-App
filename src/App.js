@@ -11,7 +11,7 @@ import dashboard from './components/admin/dashboard'
 import studentList from './components/admin/studentList'
 import StudentContainer from './components/student/studentContainer'
 import studentLogin from './components/student/studentLogin'
-import studentAccount from './components/student/studentAccount'
+import studentDashboard from './components/student/studentDashboard'
 
 const App = (props) =>  {
   return (
@@ -29,7 +29,7 @@ const App = (props) =>  {
 
       <Route path='/student' component={StudentContainer} exact/>
       <Route path='/student/login' component={studentLogin} exact/> 
-      <Route path='/student/account' component={studentAccount} exact/>
+      <Route path='/student/dashboard' component={studentDashboard} exact/>
     </div>
   )
 }
