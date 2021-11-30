@@ -14,17 +14,25 @@ const ELearningContainer = (props) =>  {
   })
   return (
     <div>
-      {(admin.isLoading || student.isLoading) ? (
-          <>
-            <Link to='/'>Home</Link> | <Link to='/admin'>Admin</Link> | <Link to='/student'>Student</Link>
-          </>
-        ) : (
-          <>
-            {student.isLogin ? <StudentContainer/> : <AdminContainer/> }
-          </>
-        )
-      } 
-
+      <nav className='navbar navbar-expand-lg navbar-light bg-ligth'>
+        <div className='container-fluid'>
+          <h1 className='navbar-brand'>Learn from Home</h1>
+            <ul className='nav navbar-nav'>
+                    {(admin.isLoading || student.isLoading) ? (
+                        <>
+                          <li><Link to='/'>Home</Link></li> 
+                          <li><Link to='/admin'>Admin</Link></li>  
+                          <li><Link to='/student'>Student</Link></li>
+                        </>
+                      ) : (
+                        <>
+                          {student.isLogin ? <StudentContainer/> : <AdminContainer/> }
+                        </>
+                      )
+                    } 
+            </ul>
+        </div>
+      </nav>
       
     </div>
   )

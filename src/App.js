@@ -1,5 +1,6 @@
 import React from 'react'
 import {Route,withRouter} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import ELearningContainer from './components/eLearningContainer'
 import Home from './components/home&login/Home'
 import AdminContainer from './components/admin/adminContainer'
