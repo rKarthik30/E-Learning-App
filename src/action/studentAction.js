@@ -60,3 +60,34 @@ export const toggleLogoutChange = (value) => {
         payload: value
     }
 }
+
+// export const startEnroll = () => {
+//     return (dispatch) => {
+//         axios.patch()
+//     }
+// }
+
+export const startCourse = () => {
+    return (dispatch) => {
+        axios.get('https://dct-e-learning.herokuapp.com/api/courses',{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else {
+                    dispatch(sendCourse(result))
+                }
+            })
+    }
+}
+
+export const sendCourse = (result) => {
+    return {
+        type: 'COURSE',
+        payload:result
+    }
+}

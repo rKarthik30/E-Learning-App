@@ -14,7 +14,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(startCourse())
-    },[])
+    },[toggle])
 
     const click = () => {
         setToggle(!toggle)

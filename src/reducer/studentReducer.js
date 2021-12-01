@@ -2,6 +2,7 @@ const studentInitialState = {
     isLoading : true,
     isLogin: false,
     data:[],
+    courses:[],
     errors:{}
 }
 
@@ -18,6 +19,9 @@ const studentReducer = (state = studentInitialState,action) => {
         }
         case 'LOGOUT_CHANGE' : {
             return {...state,isLogin: action.payload}
+        }
+        case 'COURSE' : {
+            return {...state,courses: action.payload}
         }
         default: {
             return {...state}

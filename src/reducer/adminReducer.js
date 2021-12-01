@@ -30,7 +30,7 @@ const adminReducer = (state = adminInitialState,action) => {
             return {...state,student:result}
         }
         case 'ADD_COURSE' : {
-            return {...state,course: action.payload}
+            return {...state, course: [...action.payload]}
         }
         case 'COURSE' : {
             return {...state,course: action.payload}

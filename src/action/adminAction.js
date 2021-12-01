@@ -163,18 +163,18 @@ export const startCourseCreate = (courseData,reset,click) => {
                     alert('Successfully created course')
                     reset()
                     click()
-                    dispatch(sendCourseData(result))
+                    // dispatch(sendCourseData(result))
                 }
             })
     }
 }
 
-export const sendCourseData = (result) => {
-    return {
-        type: 'ADD_COURSE',
-        payload: result
-    }
-}
+// export const sendCourseData = (result) => {
+//     return {
+//         type: 'ADD_COURSE',
+//         payload: result
+//     }
+// }
 
 export const startCourse = () => {
     return (dispatch) => {
