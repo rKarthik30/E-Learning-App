@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {startCourse} from '../../action/studentAction'
+import {startCourse,startEnroll,startUnEnroll} from '../../action/studentAction'
 
 const StudentDashboard = (props) =>  {
   const [toggle,setToggle] = useState(true)
@@ -18,11 +18,11 @@ const StudentDashboard = (props) =>  {
   }
 
   const handleEnroll = (id) => {
-
+    dispatch(startEnroll(id))
   }
 
   const handleUnenroll = (id) => {
-
+    dispatch(startUnEnroll(id))
   }
 
   return (
@@ -52,11 +52,7 @@ const StudentDashboard = (props) =>  {
                     <td>{ele.level}</td>
                     <td>{ele.duration} months</td>
                     <td>{ele.validity} months</td>
-                    <td>{toggle ? (
-                      <button onClick={handleToggle}>Enroll</button> 
-                      ) : (
-                      <button onClick={handleToggle}>Unenroll</button>
-                    )}</td>
+                    <td><button onClick={() => {handleEnroll(ele._id)}}>Enroll</button> <button onClick={() => {handleUnenroll(ele._id)}}>Unenroll</button></td>
                   </tr>
                 )
               })}

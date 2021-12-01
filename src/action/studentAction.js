@@ -61,12 +61,6 @@ export const toggleLogoutChange = (value) => {
     }
 }
 
-// export const startEnroll = () => {
-//     return (dispatch) => {
-//         axios.patch()
-//     }
-// }
-
 export const startCourse = () => {
     return (dispatch) => {
         axios.get('https://dct-e-learning.herokuapp.com/api/courses',{
@@ -89,5 +83,44 @@ export const sendCourse = (result) => {
     return {
         type: 'COURSE',
         payload:result
+    }
+}
+
+export const startEnroll = (id) => {
+    return (dispatch) => {
+        axios.patch(`https://dct-e-learning.herokuapp.com/api/courses/enroll?courseId=${id}`,{},{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else{
+                    alert('successfully Enrolled')
+                }
+            })
+            // .catch((err) => {
+            //     alert(err.message)
+            // })
+    }
+}
+
+export const startUnEnroll = (id) => {
+    return (dispatch) => {
+        axios.patch(`https://dct-e-learning.herokuapp.com/api/courses/enroll?courseId=${id}`,{},{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else{
+                    alert('successfully UnEnrolled')
+                }
+            })
     }
 }
