@@ -12,13 +12,13 @@ const StudentList = () => {
         dispatch(startStudentList())
     },[])
 
-    const handleRemove = (id) =>{
+    const handleRemove = (id) =>{ 
         dispatch(startStudentDelete(id))
     }
 
     return(
         <div>
-            <h2>Student list</h2>
+            <h2> Total Student - {student.length}</h2>
             <table border='1px'>
                 <thead>
                     <tr>

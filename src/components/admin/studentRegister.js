@@ -32,6 +32,9 @@ const StudentRegister = () => {
         }else if(!validator.isEmail(email)){
             errors.email = 'Invalid Email'
         }
+        if(password.trim().length === 0){
+            errors.password = 'Password cannot be empty'
+        }
     }
 
     const reset = () => {

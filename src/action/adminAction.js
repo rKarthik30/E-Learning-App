@@ -103,6 +103,7 @@ export const startStudentList = () => {
             .then((res) => {
                 const result = res.data
                 if(result.hasOwnProperty('errors')){
+                    console.log(result.errors)
                     alert(result.errors)
                 }else{
                     dispatch(sendStudentList(result))
@@ -119,8 +120,8 @@ export const sendStudentList = (result) => {
 }
 
 export const startStudentDelete = (id) => {
-    return (disatch) => {
-        axios.delete(`https://dct-e-learning.herokuapp.com/api/admin/students/:${id}`,{
+    return (dispatch) => {
+        axios.delete(`https://dct-e-learning.herokuapp.com/api/admin/students/${id}`,{
             headers: {
                 'Authorization' : localStorage.getItem('token') 
             }
@@ -128,10 +129,11 @@ export const startStudentDelete = (id) => {
             .then((res) => {
                 const result = res.data
                 if(result.hasOwnProperty('errors')){
+                    console.log(result.errors);
                     alert(result.errors)
                 }else {
                     alert('Successfully removed the Student')
-                    disatch(sendStudentDelete(id))
+                    dispatch(sendStudentDelete(id))
                 }
 
             })
@@ -149,9 +151,10 @@ export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')
         localStorage.removeItem('token')
-        // props.history.push("/")
+        
         const result = logoutAuth()
         dispatch(startLogoutToggle(result))
+        props.history.push("/") // withRouter component
     }
 }
 

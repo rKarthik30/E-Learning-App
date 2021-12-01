@@ -19,9 +19,6 @@ const studentReducer = (state = studentInitialState,action) => {
         case 'LOGOUT_CHANGE' : {
             return {...state,isLogin: action.payload}
         }
-        case 'ACCOUNT' : {
-            return {...state,data:[action.payload]}
-        }
         default: {
             return {...state}
         }

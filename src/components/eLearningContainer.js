@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 import AdminContainer from './admin/adminContainer' 
 import StudentContainer from './student/studentContainer'
 
@@ -20,8 +20,8 @@ const ELearningContainer = (props) =>  {
             <ul className='nav navbar-nav'>
                     {(admin.isLoading || student.isLoading) ? (
                         <>
-                          <li><Link to='/'>Home</Link></li> 
-                          <li><Link to='/admin'>Admin</Link></li>  
+                          <li><Link to='/'>Home</Link></li> |
+                          <li><Link to='/admin'>Admin</Link></li> |
                           <li><Link to='/student'>Student</Link></li>
                         </>
                       ) : (
@@ -38,4 +38,4 @@ const ELearningContainer = (props) =>  {
   )
 }
 
-export default ELearningContainer
+export default withRouter(ELearningContainer)

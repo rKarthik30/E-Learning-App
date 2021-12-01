@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
 import {useDispatch,useSelector} from 'react-redux'
 import {startLogout} from '../../action/studentAction'
 
@@ -35,4 +35,4 @@ const StudentContainer = (props) =>  {
   )
 }
 
-export default StudentContainer
+export default withRouter(StudentContainer)
