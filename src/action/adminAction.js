@@ -147,6 +147,86 @@ export const sendStudentDelete = (id) => {
     }
 }
 
+export const startCourseCreate = (courseData,reset,click) => {
+    return (dispatch) => {
+        axios.post('https://dct-e-learning.herokuapp.com/api/courses',courseData,{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                    console.log(result.errors);
+                } else {
+                    alert('Successfully created course')
+                    reset()
+                    click()
+                    dispatch(sendCourseData(result))
+                }
+            })
+    }
+}
+
+export const sendCourseData = (result) => {
+    return {
+        type: 'ADD_COURSE',
+        payload: result
+    }
+}
+
+export const startCourse = () => {
+    return (dispatch) => {
+        axios.get('https://dct-e-learning.herokuapp.com/api/courses',{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else {
+                    dispatch(sendCourse(result))
+                }
+            })
+    }
+}
+
+export const sendCourse = (result) => {
+    return {
+        type: 'COURSE',
+        payload:result
+    }
+}
+
+export const startCourseDelete = (id) => {
+    return (dispatch) => {
+        axios.delete(`https://dct-e-learning.herokuapp.com/api/courses/${id}`,{
+            headers: {
+                'Authorization' : localStorage.getItem('token') 
+            }
+        })
+            .then((res) => {
+                const result = res.data
+                if(result.hasOwnProperty('errors')){
+                    alert(result.errors)
+                }else {
+                    alert('successfully deleted course')
+                    dispatch(sendDeleteCourse(id))
+                }
+            })
+    }
+}
+
+export const sendDeleteCourse = (id) => {
+    return {
+        type:'DELETE_COURSE',
+        payload:id
+    }
+}
+
 export const startLogout = (props,logoutAuth) => {
     return (dispatch) => {
         alert('Successfully logged out')

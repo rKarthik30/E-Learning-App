@@ -2,6 +2,7 @@ const adminInitialState ={
     isLoading : true,
     data : [],
     student : [],
+    course: [],
     errors : {}
 }
 
@@ -26,8 +27,19 @@ const adminReducer = (state = adminInitialState,action) => {
             const result = state.student.filter((ele) => {
                 return ele._id !== action.payload
             })
-
             return {...state,student:result}
+        }
+        case 'ADD_COURSE' : {
+            return {...state,course: action.payload}
+        }
+        case 'COURSE' : {
+            return {...state,course: action.payload}
+        }
+        case 'DELETE_COURSE' : {
+            const result = state.course.filter((ele) => {
+                return ele._id !== action.payload
+            })
+            return {...state,course:result}
         }
         default : {
             return {...state}
